@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AllariMVCproject</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AllariMVCproject.styles.css" asp-append-version="true" />
+    
+    <script>
+
+        function startTime() {
+        const now = new Date();
+        
+        let hours = now.getHours();
+        let minutes = now.getMinutes();
+        let seconds = now.getSeconds();
+        minutes = checkTime(minutes);
+        seconds = checkTime(seconds);
+
+        document.getElementById("hours").innerText = "" + hours;
+        document.getElementById("minutes").innerText = "" + minutes;
+        document.getElementById("seconds").innerText = "" + seconds;
+
+        setTimeout(startTime, 1000);
+
+        }
+
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };
+            return i;
+        }
+    </script>
+
+</head>
+<body onload="startTime()">
+    <header>
+        <div class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 d-flex justify-content-center align-content-center">
+            <div id="clock">
+                <span id="hours"></span>  :  <span id="minutes"></span> : <span id="seconds"> </span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="d-flex justify-content-center align-content-center" style="background-color: #3333">
+
+            <h2>Matheus Henrique Dos Santos Rosa</h2>
+            
+    </nav>
+
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted ">
+        <div class="container-fluid d-flex justify-content-center align-items-center" style="background-color: #ddd;">
+            <a href="https://allari.com"> Meet Allari </a>
+        </div>
+    </footer>
+    <script> 
+
+        document.onmousemove = getMouseCoordinates;
+
+        function getMouseCoordinates(event) {
+
+            let X_axis = event.clientX;
+            let Y_axis = event.clientY;
+
+        document.getElementById("mouse-x-axis").innerText = ""+X_axis;
+        document.getElementById("mouse-y-axis").innerText = ""+Y_axis;
+
+        }
+
+    </script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#backend-list-div").hide();
+            $("#list-fetching").hide();
+
+            $("#fetch-btn").click(function () {
+
+                   if( $("#backend-list-div").is(":hidden") ) {
+
+                       $("#html-list-div").hide();
+
+                        $("#list-fetching").show();
+
+                        $.ajax({
+                            method: "GET",
+                            url: "/Home/ListItems",
+                            success: function (data) {
+                                $("#list-fetching").hide();
+                                $("#backend-list-div").show();
+
+                              for (var i = 0; i < data.length; i++) {
+                                   $("#list-backend").append("<li  class='list-group-item'>Id:"+data[i].id+" | Description:"+data[i].description+"")
+                               }
+                      
+
+                            }
+                        })
+
+               
+                    }
+
+             
+            });
+        });
+    </script>
+
+    <script>
+
+        function createRipple(event) {
+            const button = event.currentTarget;
+
+            const circle = document.createElement("span");
+            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const radius = diameter / 2;
+
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+            circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+            circle.classList.add("ripple");
+
+            const ripple = button.getElementsByClassName("ripple")[0];
+
+            if (ripple) {
+                ripple.remove();
+            }
+
+                button.appendChild(circle);
+            }
+
+        const buttons = document.getElementsByClassName("custom-btn");
+        for (const button of buttons) {
+        button.addEventListener("click", createRipple);
+        }
+
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

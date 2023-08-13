@@ -1,0 +1,122 @@
+﻿
+@{
+
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div class="">
+
+    <div class="row h-100">
+
+        <section id="left-mouse-coordinates" class="col">
+
+            <div class="d-flex flex-column h-100 justify-content-center align-items-center">
+
+                <div>
+                    <p>X Axis: <span id="mouse-x-axis"> 0 </span> </p>
+                </div>
+
+                <div>
+                    <p>Y Axis: <span id="mouse-y-axis"> 0 </span> </p>
+                </div>
+
+            </div>
+           
+
+        </section>
+
+        <section id="center-items-list" class="col-6">
+
+            <div class="container mx-3">
+                <div class="d-flex justify-content-center align-items-center my-4 text-center fw-bold">
+                    This project was made with .NET MVC and JQuery AJAX, in the main content we have a hardcoded Shopping item list, 
+                    that change to a fetched version of if on the click of a button
+                </div>
+            </div>
+               
+            <div id="btn-container" class="d-flex justify-content-center align-items-center ">
+                <button id="fetch-btn" value="Fetch Items List" class="custom-btn" >
+                     Fetch Items List
+                </button>    
+            </div>
+
+
+
+            <div class="d-flex h-50  justify-content-center align-items-center">
+
+                <div id="html-list-div">
+                    <ul class="list-group">
+                        <li class="list-group-item">Id: 1 | Description: Soda</li>
+                        <li class="list-group-item">Id: 2 | Description: Pasta</li>
+                        <li class="list-group-item">Id: 3 | Description: Olive Oil</li>
+                    </ul>
+                </div>
+              
+              <div id="list-fetching">
+
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+
+              </div>
+      
+                <div id="backend-list-div" >
+                    <div class="w-100 d-flex justify-content-center align-items-center">
+                      <p> Fetched from backend! </p>
+                    </div>
+                        <ul id="list-backend" class="list-group">
+                        </ul>
+                </div>
+            </div>
+           
+        </section>
+
+        <section id="right-carousel" class="col  d-flex justify-content-center align-items-center " style="background-color: #5e7191;min-height: 80vh;">
+                <div class="container">
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+
+                          <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                          </div>
+                          
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+                                <div class="w-100 d-flex justify-content-center align-content-center" >
+                                    <img src="https://picsum.photos/seed/picsum/200" height="200" width="200" alt="...">
+                                </div>
+                            </div>
+
+                            <div class="carousel-item ">
+                                <div class="w-100 d-flex justify-content-center align-content-center" >
+                                    <img src="https://picsum.photos/seed/wolrd/200" height="200" width="200" alt="...">
+                                </div>
+                            </div>       
+                            
+                            <div class="carousel-item ">
+                                <div class="w-100 d-flex justify-content-center align-content-center" >
+                                    <img src="https://picsum.photos/seed/happiness/200" height="200" width="200" alt="...">
+                                </div>
+                            </div>
+
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+        </section>
+
+    </div>
+
+   
+</div>
